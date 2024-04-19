@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ban-container {
+            display: flex;
+        }
+        .banner {
+  width: 100%;
+  height: 70px; /* Adjust height as needed */
+  overflow: hidden;
+  display: flex;
+  background-color: blue;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  align-items: center;
+}
+
+.ads {
+  display: flex;
+  animation: flash 10s infinite; /* Adjust animation duration as needed */
+}
+
+.ads a img {
+  width: 200px; /* Adjust image width as needed */
+  margin-right: 20px; /* Adjust spacing between ads as needed */
+  height: auto;
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+#popup {
+  position: fixed;
+  top: 70%;
+  left: 18%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  opacity: 0.6;
+}
+#popup:hover {
+    opacity: 1;
+}
+.popup-content {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 20px;
+  color: #000000;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="ban-container">
+        <div class="banner">
+            <div class="ads">
+                <a href="#"><img src="./ads-images/img1.jpeg" alt="Advertisement 1"></a>
+            </div>
+            <div class="ads">
+                <a href="#"><img src="./ads-images/img2.jpg" alt="Advertisement 2"></a>
+            </div>
+            <div class="ads">
+                <a href="#"><img src="./ads-images/img3.jpeg" alt="Advertisement 3"></a>
+            </div>
+            <div class="ads">
+                <a href="#"><img src="./ads-images/img4.jpg" alt="Advertisement 4"></a>
+            </div>
+            <div class="ads">
+                <a href="#"><img src="./ads-images/img5.png" alt="Advertisement 5"></a>
+            </div>
+            <div class="ads">
+                <a href="#"><img src="./ads-images/img6.png" alt="Advertisement 6"></a>
+            </div>
+            <div class="ads">
+                <a href="#"><img src="./ads-images/img7.jpeg" alt="Advertisement 7"></a>
+            </div>
+            <div class="ads">
+                <a href="#"><img src="./ads-images/img8.png" alt="Advertisement 8"></a>
+            </div>
+        </div>
+    </div>
+   
+    <!-- popup ad -->
+<div id="popup">
+    <span class="close-btn">&times;</span>
+    <div class="popup-content">
+        <img src="./ads-images/img7.jpeg" alt="Popup Ad">
+        <p>Special Offer!</p>
+    </div>
+</div>
+
+    
+
+
+    <script>
+        // Example JavaScript to change ads dynamically
+            const ads = document.querySelector('.ads');
+            const adImages = ["./ads-images/img1.jpeg", "./ads-images/img2.jpg", "./ads-images/img3.jpeg", "./ads-images/img4.jpg", "./ads-images/img5.png", "./ads-images/img6.png", "./ads-images/img7.jpeg", "./ads-images/img8.png"]; // Add paths to your ad images
+
+            let index = 0;
+
+            function changeAd() {
+                ads.innerHTML = `<img src="${adImages[index]}" alt="Advertisement ${index + 1}">`;
+                index = (index + 1) % adImages.length;
+            }
+
+            // Call changeAd function periodically
+            setInterval(changeAd, 10000); // Change ad every 10 seconds
+
+            //popup display
+           document.addEventListener('DOMContentLoaded', function () {
+                const popup = document.getElementById('popup');
+                const closeBtn = document.querySelector('.close-btn');
+
+                closeBtn.addEventListener('click', function () {
+                    popup.style.display = 'none';
+                });
+            });
+
+    </script>
+</body>
+</html>
